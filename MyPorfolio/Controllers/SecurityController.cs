@@ -20,6 +20,7 @@ public class SecurityController : Controller
     [HttpPost]
     public IActionResult login(Admin admin)
     {
+        var admins = db.Admins.ToList();
         Admin? data = db.Admins.FirstOrDefault(x => x.UserName == admin.UserName && x.Password == admin.Password);
         if (data != null)
         {
