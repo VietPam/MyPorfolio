@@ -21,7 +21,7 @@ public class Program
                 {
                     c.LoginPath = "/Security/Login";
                 });
-
+        
         builder.Services.AddMvc(config =>
         {
             var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();

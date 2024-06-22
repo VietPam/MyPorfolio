@@ -17,9 +17,11 @@ public class AboutsController : Controller
     // GET: Abouts
     public async Task<IActionResult> Index()
     {
-        return _context.Abouts != null ?
-                    View(await _context.Abouts.ToListAsync()) :
-                    Problem("Entity set 'MySiteContext.Abouts'  is null.");
+        if (_context.Abouts == null)
+        {
+            return Problem("Entity set 'MySiteContext.Abouts'  is null.");
+        }
+        return View(await _context.Abouts.ToListAsync());
     }
 
     // GET: Abouts/Details/5
