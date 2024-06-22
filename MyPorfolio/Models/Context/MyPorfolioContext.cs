@@ -6,6 +6,7 @@ namespace MyPorfolio.Models.Context;
 public class MyPorfolioContext :DbContext
 {
     public DbSet<Admin> Admins { get; set; }
+    public DbSet<About> Abouts { get; set; }
 
     public MyPorfolioContext()
     {
