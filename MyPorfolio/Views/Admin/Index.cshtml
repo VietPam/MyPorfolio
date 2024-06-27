@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Admin Panel</h1>
+
+<h3>
+    Welcome to the admin panel page!
+</h3>
+
+
+<ul>
+    <li>
+        <a asp-controller="Abouts" asp-action="Index" class="btn btn-success">
+            About me page management
+        </a>
+    </li>
+    <li>
+        <a asp-controller="Projects" asp-action="Index" class="btn btn-success">
+            Project page management
+        </a>
+    </li>
+    <li>
+        <a asp-controller="Contacts" asp-action="Index" class="btn btn-success">
+            Incoming Messages page management
+        </a>
+    </li>
+</ul>

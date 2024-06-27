@@ -1,0 +1,54 @@
+﻿@model MyPorfolio.Models.Entities.About
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>About Me</h4>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Header" class="control-label"></label>
+                <input asp-for="Header" class="form-control" />
+                <span asp-validation-for="Header" class="text-danger"></span>
+            </div>
+
+
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/ckeditor/ckeditor.js"></script>
+            <script>
+                $(document).ready(function () {
+                    CKEDITOR.replace('test');
+                })
+            </script>
+            <div class="form-group">
+                <label asp-for="Text" class="control-label"></label>
+                <textarea name="Text" id="test"></textarea>
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TextDate" class="control-label"></label>
+                <input asp-for="TextDate" class="form-control" />
+                <span asp-validation-for="TextDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TextPic" class="control-label"></label>
+                <input type="file" asp-for="TextPic" class="form-control" name="TextPic" />
+                <span asp-validation-for="TextPic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
