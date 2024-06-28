@@ -1,0 +1,7 @@
+2024-06-28 20:17:08.461 +07:00 [INF] getFileLog
+2024-06-28 20:17:08.578 +07:00 [ERR] An error occurred: System.IO.IOException: The process cannot access the file 'C:\Users\admin\Documents\priority\MVC\simple-portfolio\MyPorfolio\MyPorfolio\logs\mylog20240628.txt' because it is being used by another process.
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.File.ReadAllBytes(String path)
+   at MyPorfolio.Program.<>c.<Main>b__1_4(HttpContext context) in C:\Users\admin\Documents\priority\MVC\simple-portfolio\MyPorfolio\MyPorfolio\Program.cs:line 93
+2024-06-28 20:17:23.272 +07:00 [INF] getFileLog

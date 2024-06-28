@@ -1,15 +1,29 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using MyPorfolio.Apis;
 using MyPorfolio.Models.Context;
+using Serilog;
+using Serilog.Sinks.SystemConsole.Themes;
 
 namespace MyPorfolio;
 
 public class Program
 {
+    public static MyBot mybot = new MyBot();
+    public static MyFile api_file = new MyFile();
     public static void Main(string[] args)
     {
+
+        Log.Logger = new LoggerConfiguration()
+           .MinimumLevel.Debug()
+           .WriteTo.Console(theme: AnsiConsoleTheme.Sixteen, outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+           .WriteTo.File("logs/mylog.txt", rollingInterval: RollingInterval.Day)
+           .CreateLogger();
+
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddDbContext<MyPorfolioContext>(
@@ -21,7 +35,7 @@ public class Program
                 {
                     c.LoginPath = "/Security/Login";
                 });
-        
+
         builder.Services.AddMvc(config =>
         {
             var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
@@ -29,6 +43,7 @@ public class Program
         });
 
         builder.Services.AddControllersWithViews();
+        builder.Services.AddSingleton<MyBot>();
 
         var app = builder.Build();
 
@@ -37,10 +52,8 @@ public class Program
             app.UseExceptionHandler("/Home/Error");
             app.UseHsts();
         }
-
         app.UseHttpsRedirection();
         app.UseStaticFiles();
-
         app.UseRouting();
 
         app.UseAuthentication();
@@ -50,6 +63,8 @@ public class Program
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Site}/{action=Index}/{id?}");
+
+        mybot.start();
 
         app.Run();
     }
