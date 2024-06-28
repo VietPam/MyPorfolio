@@ -16,6 +16,9 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "./MyPorfolio.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
+# Copy the SQLite database file to the publish folder
+COPY MyPorfolio/Models/mydb.db /app/publish/Models/
+
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
