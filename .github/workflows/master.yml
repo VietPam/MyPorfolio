@@ -26,3 +26,9 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: docker push 20522153/myporfolio:latest 
+
+      - name: Trigger deploy hooks
+        env:
+          deploy_url: ${{ vars.DEPLOY_HOOKS }}
+        run: |
+          curl "$deploy_url"
