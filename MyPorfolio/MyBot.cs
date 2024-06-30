@@ -22,9 +22,9 @@ public class MyBot
                 try
                 {
                     string baseUrl = "https://myporfolio-latest.onrender.com";
-                    Log.Information("calling api");
-                    HttpResponseMessage response = await client.GetAsync($"{baseUrl}/api/rest/hello");
-                    Log.Information("called api");
+                    string path = $"{baseUrl}/api/rest/hello";
+                    Log.Information($"calling api: {path}");
+                    HttpResponseMessage response = await client.GetAsync(path);
                     if (response.IsSuccessStatusCode)
                     {
                         Log.Information("called api success");
@@ -40,9 +40,10 @@ public class MyBot
                 catch (Exception ex)
                 {
                     Log.Error($"An error occurred: {ex}");
-                    Log.Information("called api fail");
                 }
-                Thread.Sleep(10000); // Gọi lại mỗi 10 giây
+                // render service sleep after 15 minutes without receive any request
+                // set sleep each 10 minutes
+                Thread.Sleep(10* 60* 1000); 
             }
         })
         {
