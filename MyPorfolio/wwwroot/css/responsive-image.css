@@ -1,0 +1,20 @@
+﻿.responsive-image {
+    max-width: 100%; /* Ảnh sẽ không vượt quá kích thước của container */
+    height: auto; /* Chiều cao của ảnh tự động thay đổi */
+}
+
+/* Media query để chỉnh kích thước ảnh khi màn hình có tỉ lệ 16:9 */
+@media screen and (min-aspect-ratio: 16/9) {
+    .responsive-image {
+        width: 50%; /* Hiển thị ảnh với 50% kích thước trên màn hình tỉ lệ 16:9 */
+    }
+    .align-left {
+        float: left; /* Căn ảnh về phía trái */
+        clear: none; /* Không xoá các float khác */
+    }
+}
+/*.align-left {
+    margin-left: 0;*/ /* Xóa bỏ margin trái */
+    /*margin-right: auto;*/ /* Margin phải tự động */
+    /*display: block;*/ /* Đảm bảo ảnh là một khối block */
+/*}*/
