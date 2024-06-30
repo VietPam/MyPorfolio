@@ -43,26 +43,26 @@
                 </li>
                 <div class="portfolio-modal modal fade" id="About@(item.ID)" tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="close-modal" data-bs-dismiss="modal"><img src="/assets/img/close-icon.svg" alt="Close modal" /></div>
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8">
-                                        <div class="modal-body">
-                                            <!-- Project details-->
-                                            <h2 class="text-uppercase">@item.Header</h2>
-                                            <p class="item-intro text-muted">Details of the article are below.</p>
-                                            <img class="img-fluid d-block mx-auto" src="/images/@item.TextPic" alt="@item.TextPic" />
-                                            <p>@Html.Raw(item.Text)</p>
+                        <div class="modal-content p-0">
+                            <div class="container"> 
+                                <div class="row justify-content-center ">
+                                <div class="col-lg-8" >
+                                    <div class="modal-body">
+                                        <h2 class="text-uppercase">@item.Header</h2>
+                                        <div class="close-modal" data-bs-dismiss="modal"><img src="/assets/img/close-icon.svg" alt="Close modal" /></div>
 
-                                            <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                                <i class="fas fa-xmark me-1"></i>
-                                                Close Blog
-                                            </button>
-                                        </div>
+                                        <p class="item-intro text-muted">Details of the article are below.</p>
+                                        <img class="img-fluid d-block mx-auto" src="/images/@item.TextPic" alt="@item.TextPic" />
+                                        <p>@Html.Raw(item.Text)</p>
+
+                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                            <i class="fas fa-xmark me-1"></i>
+                                            Close Blog
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+                             </div>
                         </div>
                     </div>
                 </div>
