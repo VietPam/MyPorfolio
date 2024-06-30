@@ -32,7 +32,7 @@ public class AboutsController : Controller
             return NotFound();
         }
 
-        var about = await _context.Abouts
+        About? about = await _context.Abouts
             .FirstOrDefaultAsync(m => m.ID == id);
         if (about == null)
         {
@@ -61,7 +61,7 @@ public class AboutsController : Controller
             {
                 string imageName = TextPic.FileName;
                 string path = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/images/{imageName}");
-                var stream = new FileStream(path, FileMode.Create);
+                FileStream stream = new FileStream(path, FileMode.Create);
                 about.TextPic = imageName;
                 TextPic.CopyTo(stream);
             }
@@ -80,7 +80,7 @@ public class AboutsController : Controller
             return NotFound();
         }
 
-        var about = await _context.Abouts.FindAsync(id);
+        About? about = await _context.Abouts.FindAsync(id);
         if (about == null)
         {
             return NotFound();
@@ -131,7 +131,7 @@ public class AboutsController : Controller
             return NotFound();
         }
 
-        var about = await _context.Abouts
+        About? about = await _context.Abouts
             .FirstOrDefaultAsync(m => m.ID == id);
         if (about == null)
         {
@@ -150,7 +150,7 @@ public class AboutsController : Controller
         {
             return Problem("Entity set 'MySiteContext.Abouts'  is null.");
         }
-        var about = await _context.Abouts.FindAsync(id);
+        About? about = await _context.Abouts.FindAsync(id);
         if (about != null)
         {
             _context.Abouts.Remove(about);
