@@ -19,7 +19,7 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Build the Docker image
-        run: docker build --platform=linux/amd64 -t 20522153/myporfolio:latest .
+        run: docker build --no-cache --platform=linux/amd64 -t 20522153/myporfolio:latest .
 
       - name: Log in to Docker Hub
         run: docker login -u 20522153 -p ${{ vars.HUB_DOCKER_COM_PASSWORD}}
