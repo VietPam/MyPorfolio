@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using MyPorfolio.Apis;
+using MyPorfolio.Middlewares;
 using MyPorfolio.Models.Context;
 using Serilog;
 using Serilog.Sinks.SystemConsole.Themes;
@@ -52,6 +53,8 @@ public class Program
             app.UseExceptionHandler("/Home/Error");
             app.UseHsts();
         }
+        app.UseExceptionHandlerMiddleware();
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();

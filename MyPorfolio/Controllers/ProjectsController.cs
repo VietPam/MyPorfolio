@@ -54,6 +54,11 @@ public class ProjectsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind("ProjectID,ProjectName,ProjectDescription,ProjectDate,ProjectPic")] Project projects, IFormFile ProjectPic)
     {
+        string DirectoryPath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/images/Project");
+        if (!Directory.Exists(DirectoryPath))
+        {
+            Directory.CreateDirectory(DirectoryPath);
+        }
         if (ModelState.IsValid)
         {
             if (ProjectPic != null)
