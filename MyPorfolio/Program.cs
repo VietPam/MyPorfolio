@@ -47,7 +47,7 @@ public class Program
         builder.Services.AddSingleton<MyBot>();
 
         var app = builder.Build();
-
+        Log.Information($"Application started {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");
