@@ -1,0 +1,69 @@
+﻿@model List<MyPorfolio.Models.Entities.Project>
+
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Projects</h2>
+            <h3 class="section-subheading text-muted">Projects Details</h3>
+        </div>
+
+        @{
+            int modalCount = 0;
+        }
+        @foreach (var item in Model)
+        {
+            modalCount++;
+            <div class="col-lg-4 col-sm-6 mb-4">
+                <!-- Portfolio item -->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" data-bs-toggle="modal" href="#Modal@(modalCount)">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="/images/Project/@item.ProjectPic" alt="@item.ProjectPic" />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">@item.ProjectName</div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Modal-->
+            <div class="portfolio-modal modal fade" id="Modal@(modalCount)" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="close-modal" data-bs-dismiss="modal"><img src="/assets/img/close-icon.svg" alt="Close modal" /></div>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <div class="modal-body">
+                                        <!-- Project details-->
+                                        <h2 class="text-uppercase">@item.ProjectName</h2>
+                                        <p class="item-intro text-muted">Projects Details</p>
+                                        <img class="img-fluid d-block mx-auto" src="/images/Project/@item.ProjectPic" alt="@item.ProjectPic" />
+                                        <p>@Html.Raw(item.ProjectDescription)</p>
+                                        <ul class="list-inline">
+                                            <li>
+                                                <strong>Project Name:</strong>
+                                                @item.ProjectName
+                                            </li>
+                                            <li>
+                                                <strong>Created Date:</strong>
+                                                @item.ProjectDate
+                                            </li>
+                                        </ul>
+                                        <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                            <i class="fas fa-xmark me-1"></i>
+                                            Close Project
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+

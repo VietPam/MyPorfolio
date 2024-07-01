@@ -19,6 +19,7 @@ RUN dotnet publish "./MyPorfolio.csproj" -c $BUILD_CONFIGURATION -o /app/publish
 # Copy the SQLite database file to the publish folder
 COPY MyPorfolio/Models/mydb.db /app/publish/Models/
 RUN chmod -R 777 /app/publish/Models
+RUN chmod -R 777 /app/publish/wwwroot
 
 FROM base AS final
 WORKDIR /app

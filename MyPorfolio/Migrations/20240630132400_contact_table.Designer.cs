@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyPorfolio.Models.Context;
 
@@ -10,9 +11,11 @@ using MyPorfolio.Models.Context;
 namespace MyPorfolio.Migrations
 {
     [DbContext(typeof(MyPorfolioContext))]
-    partial class MyPorfolioContextModelSnapshot : ModelSnapshot
+    [Migration("20240630132400_contact_table")]
+    partial class contact_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.2");
@@ -93,38 +96,6 @@ namespace MyPorfolio.Migrations
                     b.HasKey("ContactID");
 
                     b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("MyPorfolio.Models.Entities.Project", b =>
-                {
-                    b.Property<int>("ProjectID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("ProjectDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProjectDescription")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProjectInfo")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProjectName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProjectPic")
-                        .HasMaxLength(255)
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ProjectID");
-
-                    b.ToTable("Projects");
                 });
 #pragma warning restore 612, 618
         }
