@@ -12,6 +12,7 @@ public class SiteController : Controller
     public IActionResult Index()
     {
         ViewBag.about = db.Abouts.OrderByDescending(x => x.TextDate).ToList();
+        ViewBag.BuiltDate = Program.built_date;
         return View(db.Projects.OrderByDescending(x => x.ProjectDate).ToList());
     }
     [HttpPost]
