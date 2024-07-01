@@ -16,7 +16,7 @@ public class Program
 {
     public static MyBot mybot = new MyBot();
     public static MyFile api_file = new MyFile();
-    public static string built_date = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+    public static string built_date = DateTime.UtcNow.AddHours(7).ToString("dd/MM/yyyy HH:mm:ss");
     public static void Main(string[] args)
     {
 
